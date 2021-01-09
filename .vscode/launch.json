@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-FrontendApplication<frontend>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.upcancer.frontend.FrontendApplication",
+            "projectName": "frontend",
+            "args": ""
+        }
+    ]
+}
