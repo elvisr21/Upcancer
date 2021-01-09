@@ -1,5 +1,5 @@
 import React from 'react'
-
+import SigninPage from '../Components/SignedinForm'
 export const Home = () => {
     return (
         <div style={{display:'flex',justifyContent:'center',alignItems:'center',height:'90vh'}}>
@@ -24,13 +24,13 @@ export const Contact=()=>{
         <div>Contact</div>
     )
 }
-export const Signin=()=>{
+export const Login=()=>{
     return(
-        <div>Signin</div>
+       <SigninPage></SigninPage>
     )
 }
 export const Signup=()=>{
     return(
-        <div>Signout</div>
+        <div>SignUp</div>
     )
 }

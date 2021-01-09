@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BackendApplication",
+            "request": "launch",
+            "mainClass": "com.upcancer.backend.BackendApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-FrontendApplication<frontend>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
