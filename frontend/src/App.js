@@ -5,7 +5,7 @@ import {Home,About,Contact,Services,Login,Signup} from './pages/'
 import React, { useState } from 'react';
 function App() {
     const[Signed,isSign]=useState(false)
-  if (Signed==false){
+  if (Signed===false){
       return (
         <Router>
           <Navbar/>

@@ -1,8 +1,25 @@
 import React from 'react'
 
+const axios = require('axios')
+
 function SigninPage() {
-    SigninSubmit=(event)=>{
-        
+    const  SigninSubmit=(event)=>{
+        event.preventDefault();
+        axios.get('http://localhost:8080/');
+        axios({
+                method:"post",
+                url:'http://localhost:8080/',
+                headers:{
+                    'Access-Control-Allow-Origin': '*',
+                    'content-type': 'text/json'
+                },
+                data:{
+                    name:"name",
+                    thing:"thing"
+                }
+        }).then(Response=>{
+            console.log()
+        });
     }
     return (
         <div>
