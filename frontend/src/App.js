@@ -1,25 +1,33 @@
 import './App.css';
-import Navbar from './Components/Navbar';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
-import {Home,About,Contact,Services,Login,Signup} from './pages/'
+import {Home,About,Contact,Services,Navbar} from './pages/NotSignedIn'
 import React, { useState } from 'react';
+ 
 function App() {
-    const[Signed,isSign]=useState(false)
+  const[Signed,isSign]=useState(false)
   if (Signed===false){
+      const Signin=()=>{
+        return <h1>Signin</h1>
+      }
+      const Signup=()=>{
+        return <h1>Signup</h1>
+      }
       return (
-        <Router>
-          <Navbar/>
-          <Switch>
-            <Route path="/" exact component={Home}/>
-            <Route path="/about" exact component={About}/>
-            <Route path="/Contact" exact component={Contact}/>
-            <Route path="/Signup" exact component={Signup}/>
-            <Route path="/Signin" exact component={Login}/>
-            <Route path="/services" exact component={Services}/>
-          </Switch>
+          <Router>
+              <Navbar/>
+              <Switch>
+                <Route path="/" exact component={Home}/>
+                <Route path="/about" exact component={About}/>
+                <Route path="/contact" exact component={Contact}/>
+                <Route path="/signup" exact component={Signup}/>
+                <Route path="/signin" exact component={Signin} />
+                <Route path="/services" exact component={Services}/>
+              </Switch>
+            </Router>
+          );
+      }
+  else{
 
-        </Router>
-      );
   }
 }
 
