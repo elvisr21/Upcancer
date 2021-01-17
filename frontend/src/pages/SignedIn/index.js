@@ -1,11 +1,25 @@
 import React from 'react'
-
-export const  Signedin=()=> {
+import {NavLinkLogo,NavLink,NavMenu} from './SideNavbar'
+export const  Dashboard=()=> {
     return (
         <div>
-            Signedin
+            Dashboard
         </div>
     )
 }
-
-export default Signedin
+export const SideNavbar=()=>{
+    return(
+        <nav className="SideNavbar">
+            <NavLinkLogo to='/' >
+                <img  alt="logo"/>
+            </NavLinkLogo>
+            <NavMenu>
+                <NavLink to="calendar">About</NavLink>
+                <NavLink to="chat">Contact</NavLink>
+                <NavLink to="services">Services</NavLink>
+                <NavLink to="signin">Signin</NavLink>
+                <NavLink to="signup">Signup</NavLink>
+            </NavMenu>
+        </nav>
+    )
+}

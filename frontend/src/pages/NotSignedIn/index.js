@@ -14,6 +14,7 @@ export const Navbar=()=>{
                 <NavLink to="contact">Contact</NavLink>
                 <NavLink to="services">Services</NavLink>
                 <NavLink to="signin">Signin</NavLink>
+                <NavLink to="signup">Signup</NavLink>
             </NavMenu>
         </nav>
     )

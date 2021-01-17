@@ -16,6 +16,36 @@
             "mainClass": "com.upcancer.frontend.FrontendApplication",
             "projectName": "frontend",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EurekaApplication<eureka>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.cancerup.eureka.EurekaApplication",
+            "projectName": "eureka",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-FrontService<jwt-jpa-security>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.cancerup.front.FrontService",
+            "projectName": "jwt-jpa-security",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SqlAccessLayer<sql-access-layer>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.cancerup.sqlaccesslayer.SqlAccessLayer",
+            "projectName": "sql-access-layer",
+            "args": ""
         }
     ]
 }
