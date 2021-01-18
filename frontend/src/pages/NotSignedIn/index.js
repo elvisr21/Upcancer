@@ -1,46 +1,33 @@
 import React from 'react'
-import UpCancerLogo from '../../icons/UpCancerLogo.png'
-import {NavLinkLogo,NavLink,NavMenu} from './Navbar'
-import './Navbar/navbar.css'
+import {Nav} from './Navbar'
+import {HomePage} from './Home'
+import {AboutPage} from './About'
+import {ServicePage} from './Services'
+import {ContactPage} from './Contact'
 
 export const Navbar=()=>{
     return(
-        <nav className="Navbar">
-            <NavLinkLogo to='/' >
-                <img src={UpCancerLogo} alt="logo"/>
-            </NavLinkLogo>
-            <NavMenu>
-                <NavLink to="about">About</NavLink>
-                <NavLink to="contact">Contact</NavLink>
-                <NavLink to="services">Services</NavLink>
-                <NavLink to="signin">Signin</NavLink>
-                <NavLink to="signup">Signup</NavLink>
-            </NavMenu>
-        </nav>
-    )
+        <Nav/>
+    );
 }
 export const Home = () => {
     return (
-        <div style={{display:'flex',justifyContent:'center',alignItems:'center',height:'90vh'}}>
-           <h1>Home</h1> 
-        </div>
-    )
+        <HomePage/>
+    );
 }
 export const About = () => {
     return (
-        <div style={{display:'flex',justifyContent:'center',alignItems:'center',height:'90vh'}}>
-           <h1>About</h1> 
-        </div>
+        <AboutPage/>
     )
 }
 export const Services=()=>{
     return(
-        <div>Services</div>
+        <ServicePage/>
     )
 }
 export const Contact=()=>{
     return(
-        <div>Contact</div>
+      <ContactPage/>
     )
 }
 

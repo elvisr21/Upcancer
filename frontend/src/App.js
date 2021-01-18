@@ -6,7 +6,7 @@ import {authenticate } from './functions'
 import React, { useState } from 'react';
  
 function App() {
-  const[Signed,isSign]=useState({
+  const [Signed,isSign]=useState({
     Signedin:false,
     username:""
   });
@@ -24,11 +24,11 @@ function App() {
     return (
       <div className="Login">
           <form onSubmit={SignInUser}>
-          <p>Enter your Username:</p>
-          <input type="text"/>
-          <p>Enter your Password:</p>
-          <input type="password"/>
-          <input type="submit"/>
+              <p>Enter your Username:</p>
+              <input type="text"/>
+              <p>Enter your Password:</p>
+              <input type="password"/>
+              <input type="submit"/>
           </form>
     </div>
     );
