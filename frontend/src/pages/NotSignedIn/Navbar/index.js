@@ -14,7 +14,7 @@ export const NavLink=(props)=>{
 export const NavMenu=(props)=>{
     return(
         <div className="NavMenu">{props.children}</div>
-    )
+    );
 }
 export const Nav=(props)=>{
     return(

@@ -1,16 +1,15 @@
 import './App.css';
 import {BrowserRouter as Router,Switch,Route,Redirect} from 'react-router-dom'
 import {Home,About,Contact,Services,Navbar} from './pages/NotSignedIn'
-import {Dashboard,SideNavbar} from './pages/SignedIn'
+import {Dashboard,SideNavbar,TopNavbar,Chat,Report,Calendar,Signout} from './pages/SignedIn'
 import {authenticate } from './functions'
 import React, { useState } from 'react';
  
 function App() {
   const [Signed,isSign]=useState({
-    Signedin:false,
-    username:""
+    Signedin:true,
+    username:"mike",
   });
-  console.log(Signed);
   const Signin=(props)=>{
     const SignInUser=(event)=>{
       event.preventDefault();
@@ -77,21 +76,22 @@ const Signup=()=>{
           );
       }
   else{
+      var redirect= window.location.href==="http://localhost:3000/signin";
       return(
         <Router>
-          <Redirect to="/"/>
+          {redirect &&<Redirect to="/"/>}
+          <TopNavbar/>
           <SideNavbar/>
-          <Switch>
+              <Switch>
                 <Route path="/" exact component={Dashboard}/>
-                <Route path="/about" exact component={About}/>
-                <Route path="/contact" exact component={Contact}/>
-                <Route path="/signup" exact component={Signup}/>
-                <Route path="/signin" exact component={Signin} />
-                <Route path="/services" exact component={Services}/>
+                <Route path="/calendar" exact component={Calendar}/>
+                <Route path="/report" exact component={Report}/>
+                <Route path="/chat" exact component={Chat}/>
+                <Route path="/signout" exact component={Signout} />
               </Switch>
+              <br></br>
           <h1>welcome, {Signed.username}</h1>
         </Router>
-        
       )
   }
 }

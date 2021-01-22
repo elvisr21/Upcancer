@@ -5,10 +5,11 @@ a>img {
 }
 .Navbar {
     background:#000;
-    height:80px;
+    height:98vh;
     display:flex;
     justify-content: space-around;
     z-index:10;
+    grid-area:topbar;
     padding:0.5rem calc((100vw-1000px)/2)
 }
 a {
@@ -17,17 +18,16 @@ a {
     align-items:center;
     text-decoration:none;
     padding:0 1rem;
-    height:100%;
+    height:50px;
     cursor:pointer
 }
-a.active{
-    
-}
+
 .NavMenu {
     display:flex;
     align-items:center;
     margin-right: -24px;
     max-width:768px;
+
     @media screen {
         display:none
     }

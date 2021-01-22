@@ -1,4 +1,3 @@
-
 .Login,.Register{
   padding: 60px 0;
 }
@@ -9,4 +8,10 @@
 .Login form > *,.Register form>*{
   margin:5px;
   display:flex;
+}
+#root{
+  display:grid;
+  grid-template-areas:"topbar topbar"
+                      "sidebar main";
+  grid-template-columns:20% 80%;
 }

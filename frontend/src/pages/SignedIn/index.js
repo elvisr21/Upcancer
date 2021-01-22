@@ -1,25 +1,57 @@
-import React from 'react'
-import {NavLinkLogo,NavLink,NavMenu} from './SideNavbar'
+import React from 'react';
+import {Navbar,NavItem,Dropdownmenu} from './TopNavbar';
+import {Nav as SideNav} from './SideNavbar';
+import {DashboardPage} from './Dashboard'
+import {ChatPage} from './Chat'
+import {ReportPage} from './Report'
+import {CalendarPage} from './Calendar'
+
+import { ReactComponent as BellIcon } from '../../icons/bell.svg';
+import { ReactComponent as MessengerIcon } from '../../icons/messenger.svg';
+import { ReactComponent as CaretIcon } from '../../icons/caret.svg';
+import { ReactComponent as PlusIcon } from '../../icons/plus.svg';
+
+
 export const  Dashboard=()=> {
     return (
-        <div>
-            Dashboard
-        </div>
+        <DashboardPage/>
     )
 }
 export const SideNavbar=()=>{
     return(
-        <nav className="SideNavbar">
-            <NavLinkLogo to='/' >
-                <img  alt="logo"/>
-            </NavLinkLogo>
-            <NavMenu>
-                <NavLink to="calendar">About</NavLink>
-                <NavLink to="chat">Contact</NavLink>
-                <NavLink to="services">Services</NavLink>
-                <NavLink to="signin">Signin</NavLink>
-                <NavLink to="signup">Signup</NavLink>
-            </NavMenu>
-        </nav>
+        <SideNav/>
+    );
+}
+export const TopNavbar=()=>{
+    return(
+        <Navbar>
+            <NavItem icon={<PlusIcon/>}/>
+            <NavItem icon={<BellIcon/>}/>
+            <NavItem icon={<MessengerIcon/>}/>
+            
+            <NavItem icon={<CaretIcon/>}>
+                <Dropdownmenu/>
+            </NavItem>
+        </Navbar>
+    )
+}
+export const Chat=()=>{
+    return(
+        <ChatPage/>
+    )
+}
+export const Report=()=>{
+    return(
+        <ReportPage/>
+    )
+}
+export const Calendar=()=>{
+    return(
+        <CalendarPage/>
+    )
+}
+export const Signout=()=>{
+    return(
+        <h1>Signout</h1>
     )
 }
