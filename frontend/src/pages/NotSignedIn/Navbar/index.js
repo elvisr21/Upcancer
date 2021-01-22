@@ -16,7 +16,7 @@ export const NavMenu=(props)=>{
         <div className="NavMenu">{props.children}</div>
     );
 }
-export const Nav=(props)=>{
+export const Nav=()=>{
     return(
         <nav className="Navbar">
             <NavLinkLogo to='/' >

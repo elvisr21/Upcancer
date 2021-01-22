@@ -7,8 +7,8 @@ import React, { useState } from 'react';
  
 function App() {
   const [Signed,isSign]=useState({
-    Signedin:true,
-    username:"mike",
+    Signedin:false,
+    username:"",
   });
   const Signin=(props)=>{
     const SignInUser=(event)=>{
@@ -60,23 +60,25 @@ const Signup=()=>{
   </div>
   );
 }
-  if (Signed.Signedin===false || Signed.username===""){
-      return (
-          <Router>
-              <Navbar/>
-              <Switch>
-                <Route path="/" exact component={Home}/>
-                <Route path="/about" exact component={About}/>
-                <Route path="/contact" exact component={Contact}/>
-                <Route path="/signup" exact component={Signup}/>
-                <Route path="/signin" exact component={Signin} />
-                <Route path="/services" exact component={Services}/>
-              </Switch>
-            </Router>
-          );
-      }
-  else{
-      var redirect= window.location.href==="http://localhost:3000/signin";
+console.log(Signed);
+if (Signed.Signedin===false || Signed.username===""){
+    return (
+        <Router>
+            <Navbar/>
+            <Switch>
+              <Route path="/" exact component={Home}/>
+              <Route path="/about" exact component={About}/>
+              <Route path="/contact" exact component={Contact}/>
+              <Route path="/signup" exact component={Signup}/>
+              <Route path="/signin" exact component={Signin} />
+              <Route path="/services" exact component={Services}/>
+            </Switch>
+          </Router>
+        );
+    }
+else{
+      var redirect= window.location.href==="http://localhost:3000/signin" ||window.location.href==="http://localhost:3000/register";
+      console.log(Signed);
       return(
         <Router>
           {redirect &&<Redirect to="/"/>}

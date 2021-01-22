@@ -5,7 +5,7 @@ a>img {
 }
 .Navbar {
     background:#000;
-    height:98vh;
+    height:100%;
     display:flex;
     justify-content: space-around;
     z-index:10;
