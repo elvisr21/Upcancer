@@ -1,6 +1,7 @@
 import React from 'react'
 import UpCancerLogo from '../../../icons/UpCancerLogo.png'
 import './navbar.css'
+
 export const NavLinkLogo=(props)=>{
     return(
         <a href={props.to} className="NavLinkLogo" >{props.children} </a>
