@@ -1,11 +1,11 @@
 import axios from 'axios'
-export const authenticate=(object)=>{
-    console.log(object);
+export const authenticate=(object,type)=>{
+    console.log(type);
     var url="";
-    if (object.type==="signin"){
+    if (type==="signin"){
         url="http://localhost:8080/authenticate";
     }
-    else if(object.type==="register"){
+    else if(type==="register"){
         url="http://localhost:8080/createuser";
     }
     //var url="http://localhost:8080/createuser"
