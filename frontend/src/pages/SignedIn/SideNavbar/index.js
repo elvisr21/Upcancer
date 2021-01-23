@@ -1,14 +1,18 @@
 import React from 'react'
 import UpCancerLogo from '../../../icons/UpCancerLogo.png'
 import './SideNavbar.css'
+import {Link} from 'react-router-dom'
 
 
 export const NavLinkLogo=(props)=>{
-    return <a href={props.to} className="NavLinkLogo" >{props.children} </a>
+    return (<Link to={props.to} className="NavLinkLogo">{props.children}</Link>);
+
 
 }
 export const NavLink=(props)=>{
-    return <a href={props.to} className="NavLink" >{props.children}</a>
+    return (
+        <Link to={props.to} className="NavLink">{props.children}</Link>
+    );
 
 }
 export const NavMenu=(props)=>{
@@ -34,10 +38,10 @@ export const Nav2=(props)=>{
 export const Nav=()=>{
     return(
         <div className="sidenav">
-            <a href="/">dashboard</a>
-            <a href="calendar">Calendar</a>
-            <a href="report">Report</a>
-            <a href="chat">Chat</a>
+            <Link to="/" className="NavLink">Dashboard</Link>
+            <Link to="calendar" className="NavLink">Calendar</Link>
+            <Link to="report" className="NavLink">Report</Link>
+            <Link to="chat" className="NavLink">Chat</Link>
         </div>
     )
 }

@@ -1,15 +1,17 @@
 import React from 'react'
 import UpCancerLogo from '../../../icons/UpCancerLogo.png'
 import './navbar.css'
+import {Link} from 'react-router-dom'
+
 
 export const NavLinkLogo=(props)=>{
     return(
-        <a href={props.to} className="NavLinkLogo" >{props.children} </a>
+        <Link to={props.to} className="NavLinkLogo">{props.children}</Link>
     )
 }
 export const NavLink=(props)=>{
     return(
-        <a href={props.to} className="NavLink" >{props.children}</a>
+        <Link to={props.to} className="NavLink">{props.children}</Link>
     )
 }
 export const NavMenu=(props)=>{

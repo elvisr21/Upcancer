@@ -7,8 +7,9 @@ export const authenticate=(object,type)=>{
     else if(type==="register"){
         url="http://localhost:8080/createuser";
     }
+    var data=JSON.stringify(object);
     //var url="http://localhost:8080/createuser"
-    //axios.post(url,JSON.stringify(object))
+    //axios.post(url,data)
     return({
         Signedin:true,
         username:"mike",

@@ -4,98 +4,97 @@ import {Home,About,Contact,Services,Navbar} from './pages/NotSignedIn'
 import {Dashboard,SideNavbar,TopNavbar,Chat,Report,Calendar,Signout} from './pages/SignedIn'
 import {authenticate } from './functions'
 import React, { useState } from 'react';
- 
-function App() {
-  const [Signed,isSign]=useState({
-    Signedin:false,
-    username:"",
-  });
-  const Signin=(props)=>{
+import { connect } from 'react-redux';
+
+
+function App(props) {
+    var state=props.Logged;
+    console.log(typeof(state));
+    console.log(state);
     const SignInUser=(event)=>{
-      event.preventDefault();
-      var data={
-        username:event.target[0].value,
-        password:event.target[1].value,
-        type:"signin"
-      }
-      isSign(authenticate(data));
+        event.preventDefault();
+        var data={
+          username:event.target[0].value,
+          password:event.target[1].value,
+        }
+        authenticate(data,"signin");
+        props.dispatch({type:"Signed"});
     }
-    return (
-      <div className="Login">
-          <form onSubmit={SignInUser}>
-              <p>Enter your Username:</p>
-              <input type="text"/>
-              <p>Enter your Password:</p>
-              <input type="password"/>
-              <input type="submit"/>
-          </form>
-    </div>
-    );
-  }
-const Signup=()=>{
-  const RegisterUser=(event)=>{
-    event.preventDefault();
-      var data={
-        name:event.target[0].value,
-        username:event.target[1].value,
-        email:event.target[2].value,
-        password:event.target[3].value,
-        type:"register"
-      }
-      isSign(authenticate(data));
-  }
-  return (
-    <div className="Register">
-        <form onSubmit={RegisterUser}>
-        <p>Enter your Name:</p>
-        <input type="text"/>
-        <p>Enter your Username:</p>
-        <input type="text"/>
-        <p>Enter your Email:</p>
-        <input type="email"/>
-        <p>Enter your Password:</p>
-        <input type="password"/>
-        <input type="submit"/>`
-        </form>
-  </div>
-  );
-}
-console.log(Signed);
-if (Signed.Signedin===false || Signed.username===""){
-    return (
-        <Router>
-            <Navbar/>
-            <Switch>
-              <Route path="/" exact component={Home}/>
-              <Route path="/about" exact component={About}/>
-              <Route path="/contact" exact component={Contact}/>
-              <Route path="/signup" exact component={Signup}/>
-              <Route path="/signin" exact component={Signin} />
-              <Route path="/services" exact component={Services}/>
-            </Switch>
-          </Router>
+    const RegisterUser=(event)=>{
+        event.preventDefault();
+        var data={
+          name:event.target[0].value,
+          username:event.target[1].value,
+          email:event.target[2].value,
+          password:event.target[3].value,
+          type:"register"
+        }
+        authenticate(data)
+        props.dispatch({type:"Signed"});
+
+    }
+    const Signin=(props)=>{
+        return (
+          <div className="Login">
+              <form onSubmit={SignInUser}>
+                  <p>Enter your Username:</p>
+                  <input type="text"/>
+                  <p>Enter your Password:</p>
+                  <input type="password"/>
+                  <input type="submit"/>
+              </form>
+        </div>
         );
     }
-else{
-      var redirect= window.location.href==="http://localhost:3000/signin" ||window.location.href==="http://localhost:3000/register";
-      console.log(Signed);
-      return(
+    const Signup=()=>{
+        
+        return (
+          <div className="Register">
+              <form onSubmit={RegisterUser}>
+              <p>Enter your Name:</p>
+              <input type="text"/>
+              <p>Enter your Username:</p>
+              <input type="text"/>
+              <p>Enter your Email:</p>
+              <input type="email"/>
+              <p>Enter your Password:</p>
+              <input type="password"/>
+              <input type="submit"/>`
+              </form>
+        </div>
+        );
+    }
+    var redirect= window.location.href==="http://localhost:3000/signin" || window.location.href==="http://localhost:3000/register";
+    return (
         <Router>
-          {redirect &&<Redirect to="/"/>}
-          <TopNavbar/>
-          <SideNavbar/>
-              <Switch>
-                <Route path="/" exact component={Dashboard}/>
-                <Route path="/calendar" exact component={Calendar}/>
-                <Route path="/report" exact component={Report}/>
-                <Route path="/chat" exact component={Chat}/>
-                <Route path="/signout" exact component={Signout} />
-              </Switch>
-              <br></br>
-          <h1>welcome, {Signed.username}</h1>
-        </Router>
-      )
-  }
+            {!state && <Navbar/>}
+            {state && <TopNavbar/>}
+            {state && <SideNavbar/>}
+            <Switch>
+                {!state && <Route path="/" exact component={Home}/> }
+                {!state && <Route path="/about" exact component={About}/>}  
+                {!state && <Route path="/contact" exact component={Contact}/>} 
+                {!state && <Route path="/signup" exact component={Signup}/> } 
+                {!state && <Route path="/signin" exact component={Signin} /> }
+                {!state && <Route path="/services" exact component={Services}/>}
+
+                
+                {state && <Route path="/" exact component={Dashboard}/>} 
+                {state && <Route path="/calendar" exact component={Calendar}/>} 
+                {state && <Route path="/report" exact component={Report}/>} 
+                {state && <Route path="/chat" exact component={Chat}/>} 
+                {state && <Route path="/signout" exact component={Signout} />}
+                {state && redirect && <Redirect to="/"/>}
+            </Switch>
+          </Router>
+    );
+    
 }
 
-export default App;
+export default connect(state=>{
+    return({
+      Logged:state.Logged,
+      }
+    );
+  }
+)(App);
