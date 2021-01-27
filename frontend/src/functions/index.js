@@ -9,9 +9,11 @@ export const authenticate=(object,type)=>{
     }
     var data=JSON.stringify(object);
     //var url="http://localhost:8080/createuser"
-    //axios.post(url,data)
+    axios.post(url,data).then(res=>{
+
+    })
     return({
         Signedin:true,
         username:"mike",
     })
-} 
+}
