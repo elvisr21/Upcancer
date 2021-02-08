@@ -9,12 +9,10 @@ import { connect } from 'react-redux';
 
 function App(props) {
     var state=props.Logged;
-    console.log(typeof(state));
-    console.log(state);
     const SignInUser=(event)=>{
         event.preventDefault();
         var data={
-          username:event.target[0].value,
+          email:event.target[0].value,
           password:event.target[1].value,
         }
         authenticate(data,"signin");
@@ -24,12 +22,10 @@ function App(props) {
         event.preventDefault();
         var data={
           name:event.target[0].value,
-          username:event.target[1].value,
-          email:event.target[2].value,
-          password:event.target[3].value,
-          type:"register"
+          email:event.target[1].value,
+          password:event.target[2].value,
         }
-        authenticate(data)
+        authenticate(data,"register")
         props.dispatch({type:"Signed"});
 
     }
@@ -37,7 +33,7 @@ function App(props) {
         return (
           <div className="Login">
               <form onSubmit={SignInUser}>
-                  <p>Enter your Username:</p>
+                  <p>Enter your email:</p>
                   <input type="text"/>
                   <p>Enter your Password:</p>
                   <input type="password"/>
@@ -51,9 +47,7 @@ function App(props) {
         return (
           <div className="Register">
               <form onSubmit={RegisterUser}>
-              <p>Enter your Name:</p>
-              <input type="text"/>
-              <p>Enter your Username:</p>
+              <p>Enter your name:</p>
               <input type="text"/>
               <p>Enter your Email:</p>
               <input type="email"/>
