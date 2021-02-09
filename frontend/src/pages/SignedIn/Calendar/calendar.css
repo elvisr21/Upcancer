@@ -1,3 +1,55 @@
 .main{
     grid-area:main;
 }
+/*https://css-tricks.com/swapping-out-text-five-different-ways/*/
+
+.months{
+    align-content: center;
+    position:absolute;
+    height:600px;
+    width:1000px;
+    overflow:hidden;
+    text-align:center;
+}
+.color{
+    color: darkred;
+    font-style: italic;
+}
+th {
+    padding: 70px 25px;
+    width: 100%;
+    background: #1abc9c;
+    text-align: center;
+    font-size: 50px;
+    color: white;
+  }
+  .active {
+    padding: 5px;
+    background: #1abc9c;
+    color: white !important
+  }
+.names{
+    padding: 70px 25px;
+    width: 100%;
+    background: #c2c2c2;
+    text-align: center;
+}
+
+#Calendar .previous{ 
+    display:inline;
+    float:left;
+    margin-left:80px;
+    text-decoration:none;
+    font-size: 50px;
+} 
+
+#Calendar .next{ 
+    display:inline;
+    float:right;
+    margin-right:80px;
+    text-decoration:none;
+    font-size: 50px;
+}
+
+
+    
