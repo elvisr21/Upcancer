@@ -1,45 +1,43 @@
 import axios from 'axios'
-export const authenticate=(object,type)=>{
-    /*var request={
-        method:"POST",
-        headers:{
-            'Content-Type': 'application/json',
-        },
-        url:"",
-        data:object
-    }
-    if (type==="signin"){
-        request.url="http://localhost:8080/authenticate";
-    }
-    else if(type==="register"){
-        request.url="http://localhost:8080/createuser";
-    }
-    console.log(request)
-    axios.post(request.url,request.data,{
-        headers:{'Content-Type':'application/json'}
-    }).then(res=>{
-        console.log(res);
+const signin=(user)=>{
+    axios.post("http://localhost:8080/authenticate",user,{headers: {}})
+    .then(res=>{
+        document.cookie ="jwt="+res["data"]["jwt"];
+        return true;
+    }).catch(err => {
+        return false;
     })
-    */
-   const user = object;
-console.log(user);
-axios.post("http://localhost:8080/createuser",user, {headers: {}}).then(res => {
-    console.log("success");
-}).catch(err => {
-    if (err.response) {
-        let code = err.response.status;
-        if (code===409) {
-            alert("Account already exists");
-        } else {
-            alert("Something went wrong, try again");
+}
+const register=(user)=>{
+    axios.post("http://localhost:8080/createuser",user, {headers: {}}).then(res => {
+        signin({"email":user['email'],"password":user['password']});
+    }).catch(err => {
+        if (err.response) {
+            let code = err.response.status;
+            if (code===409) {
+                alert("Account already exists");
+            } else {
+                alert("Something went wrong, try again");
+            }
+        } 
+        else {
+            console.log("Server is unresponsive")
         }
-    } else {
-        console.log("Server is unresponsive")
+    })
+}
+export const authenticate=(object,type)=>{
+    console.log(object,type);
+    if(type==="register"){
+        register(object);
     }
-})
+    else if (type==="signin"){
+        signin(object)
+    }
+        
     return({
         Signedin:true,
         username:"mike",
     })
+
 }
 
