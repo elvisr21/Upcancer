@@ -2,29 +2,41 @@ import './App.css';
 import {BrowserRouter as Router,Switch,Route,Redirect} from 'react-router-dom'
 import {Home,About,Contact,Services,Navbar} from './pages/NotSignedIn'
 import {Dashboard,SideNavbar,TopNavbar,Chat,Report,Calendar,Signout} from './pages/SignedIn'
-import {authenticate } from './functions'
+import {authenticate,signin } from './functions'
 import React, { useState } from 'react';
 
 
 function App(props) {
-    var state=false;
-    //searches cookies for jwt
-    for (var i=0; i< document.cookie.split(";").length;i++){
-        if(document.cookie.split(";")[i].includes("jwt")){
-          state=true;
+    const [Logged,isLogged]=useState({"isLogged":false,"jwt":""});
+
+    //searches cookies for jwt if Logged doesnt have it
+    if(!Logged["isLogged"]){
+        for (var i=0; i< document.cookie.split(";").length;i++){
+            if(document.cookie.split(";")[i].includes("jwt")){
+              isLogged({"isLogged":true,"jwt":document.cookie.split(";")[i].split("=")[1]})
+              break
+            }
         }
-    }
-    //true if cookie exist else false
-    const [Logged,isLogged]=useState(state);
-    
+    }    
+    //sends sign in request to backend and returns a promise
     const SignInUser=(event)=>{
         event.preventDefault();
         var data={
           "email":event.target[0].value,
           "password":event.target[1].value,
         }
-        isLogged(authenticate(data,"signin"));
+        authenticate(data,"signin").then(res=>{
+          document.cookie ="jwt="+res["data"]["jwt"];
+          isLogged({
+              "isLogged":true,
+              "jwt":res["data"]["jwt"]
+          });
+        }).catch(err => {
+            alert("Sign in failed");
+        })
+  
     }
+    //sends register request to backend and 
     const RegisterUser=(event)=>{
         event.preventDefault();
         var data={
@@ -32,7 +44,33 @@ function App(props) {
           "email":event.target[1].value,
           "password":event.target[2].value,
         }
-        isLogged(authenticate(data,"register"));
+        authenticate(data,"register").then(res => {
+            signin({"email":data['email'],"password":data['password']}).then(res=>{
+              document.cookie ="jwt="+res["data"]["jwt"];
+              isLogged({
+                  "isLogged":true,
+                  "jwt":res["data"]["jwt"]
+              });
+            }).catch(err => {
+                isLogged ({
+                    "isLogged":false,
+                    "jwt":""
+                });
+            })
+        }).catch(err => {
+          if (err.response) {
+              let code = err.response.status;
+              if (code===409) {
+                  alert("Account already exists");
+              } else {
+                  alert("Something went wrong, try again");
+              }
+          } 
+          else {
+              alert("Server is unresponsive")
+          }
+      })
+
     }
     const Signin=(props)=>{
         return (
@@ -66,24 +104,24 @@ function App(props) {
     var redirect= window.location.href==="http://localhost:3000/signin" || window.location.href==="http://localhost:3000/signup";
     return (
         <Router>
-            {!Logged && <Navbar/>}
-            {Logged && <TopNavbar/>}
-            {Logged && <SideNavbar/>}
+            {!Logged["isLogged"] && <Navbar/>}
+            {Logged["isLogged"] && <TopNavbar/>}
+            {Logged["isLogged"] && <SideNavbar/>}
             <Switch>
-                {!Logged && <Route path="/" exact component={Home}/> }
-                {!Logged && <Route path="/about" exact component={About}/>}  
-                {!Logged && <Route path="/contact" exact component={Contact}/>} 
-                {!Logged && <Route path="/signup" exact component={Signup}/> } 
-                {!Logged && <Route path="/signin" exact component={Signin} /> }
-                {!Logged && <Route path="/services" exact component={Services}/>}
+                {!Logged["isLogged"] && <Route path="/" exact component={Home}/> }
+                {!Logged["isLogged"] && <Route path="/about" exact component={About}/>}  
+                {!Logged["isLogged"] && <Route path="/contact" exact component={Contact}/>} 
+                {!Logged["isLogged"] && <Route path="/signup" exact component={Signup}/> } 
+                {!Logged["isLogged"] && <Route path="/signin" exact component={Signin} /> }
+                {!Logged["isLogged"] && <Route path="/services" exact component={Services}/>}
 
                 
-                {Logged && <Route path="/" exact component={Dashboard}/>} 
-                {Logged && <Route path="/calendar" exact component={Calendar}/>} 
-                {Logged && <Route path="/report" exact component={Report}/>} 
-                {Logged && <Route path="/chat" exact component={Chat}/>} 
-                {Logged && <Route path="/signout" exact component={Signout} />}
-                {Logged && redirect && <Redirect to="/"/>}
+                {Logged["isLogged"] && <Route path="/" exact component={Dashboard}/>} 
+                {Logged["isLogged"] && <Route path="/calendar" exact component={Calendar}/>} 
+                {Logged["isLogged"] && <Route path="/report" exact component={Report}/>} 
+                {Logged["isLogged"] && <Route path="/chat" exact component={Chat}/>} 
+                {Logged["isLogged"] && <Route path="/signout" exact component={Signout} />}
+                {Logged["isLogged"] && redirect && <Redirect to="/"/>}
                 {window.location.href==="http://localhost:3000/signout" && [document.cookie ="jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"] &&<Redirect to="/"/>}
             </Switch>
           </Router>
