@@ -1,3 +1,4 @@
 .vscode
 frontend/.eslintcache
 springboot-microservices/
+.vscode/launch.json

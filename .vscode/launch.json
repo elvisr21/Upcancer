@@ -46,6 +46,36 @@
             "mainClass": "com.cancerup.sqlaccesslayer.SqlAccessLayer",
             "projectName": "sql-access-layer",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ApiGateway<apigateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.cancerup.apigateway.ApiGateway",
+            "projectName": "apigateway",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EurekaServer<eurekaserver>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.cancerup.eurekaserver.EurekaServer",
+            "projectName": "eurekaserver",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MongoAccessLayer<mongo-access-layer>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.cancerup.mongoaccesslayer.MongoAccessLayer",
+            "projectName": "mongo-access-layer",
+            "args": ""
         }
     ]
 }
