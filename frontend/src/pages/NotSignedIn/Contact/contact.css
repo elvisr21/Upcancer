@@ -1,0 +1,39 @@
+body {
+    min-width: 100%;
+}
+
+.contact-text {
+    padding-left: 5px;
+    font-stretch: condensed;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.contact-title {
+    padding: 5px;
+}
+
+.contact-square {
+    border: 3px solid black;
+    width: 300px;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 3px;
+}
+
+.contact-picture {
+    margin: 0px 5px;
+    width: 75px;
+    height: 75px;
+}
+
+.contact-grid {
+    min-width: 1000px;
+    padding: 10px 20px;
+}
+
+.material-grid {}
+
+.ContactPage {
+    width: 100%;
+}
