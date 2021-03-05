@@ -4,7 +4,8 @@ import {HomePage} from './Home'
 import {AboutPage} from './About'
 import {ServicePage} from './Services'
 import {ContactPage} from './Contact'
-
+import {Sign} from './Signin'
+import {RegisterUser} from './Register'
 export const Navbar=()=>{
     return(
         <Nav/>
@@ -30,4 +31,13 @@ export const Contact=()=>{
       <ContactPage/>
     )
 }
-
+export const SignedIn=(props)=>{
+    return(
+        <Sign func={props.func} Logged={props.Logged}/>
+    )
+}
+export const Register=(props)=>{
+    return(
+        <RegisterUser func={props.func} Logged={props.Logged} Signin={props.Signin}/>
+    )
+}
