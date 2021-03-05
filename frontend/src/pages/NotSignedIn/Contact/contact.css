@@ -1,12 +1,16 @@
 .contact-text {
-    padding-left: 5px;
+    padding-left: 7px;
     font-stretch: condensed;
     font-size: 14px;
-    vertical-align: middle;
+    vertical-align: top;
 }
 
 .contact-title {
-    padding: 5px 20px;
+    padding: 20px 10px 0px 5px;
+}
+
+.contact-icon {
+    margin-top: 3px;
 }
 
 .contact-square {
@@ -24,22 +28,24 @@
 }
 
 .contact-grid {
-    min-width: 1000px;
-    padding: 10px 20px;
+    max-width: 1000px;
+    padding: 10px 0px;
+    margin: 0px;
 }
 
-.material-grid {}
-
 .contact-page {
-    width: 1600px;
-    padding-top: 20px;
+    width: 1500px;
 }
 
 .add-contact {
     background-color: lightblue;
-    width: 300px;
-    height: 500px;
-    margin: 30px;
+    border-radius: 15px;
+    width: 450px;
+    height: 620px;
+    margin: 30px 0px 20px 30px;
+    padding: 20px;
+    position: fixed;
+    z-index: -1;
 }
 
 .info-row {
@@ -48,4 +54,55 @@
 
 .name-row {
     height: 30px;
+}
+
+.detail-card {
+    background-color: rgb(191, 218, 224);
+    height: 115%;
+    width: 97%;
+    margin-left: 30px;
+    margin-right: 0px;
+}
+
+.detail-picture {
+    justify-content: center;
+    padding-top: 20px;
+    width: 100%;
+    margin: 0;
+}
+
+.detail-title {
+    justify-content: center;
+    width: 100%;
+    padding: 20px 30px 10px 30px;
+    margin: 0;
+}
+
+.back-btn {
+    position: absolute;
+    top: 2%;
+    left: 95%;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: start;
+}
+
+.form-label {
+    font-size: 12px;
+}
+
+.top-row {
+    justify-content: space-between;
+}
+
+.search-bar {
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 300px;
+    height: 40px;
+    margin-top: 25px;
+    padding: 5px;
+    padding-left: 5px;
 }
