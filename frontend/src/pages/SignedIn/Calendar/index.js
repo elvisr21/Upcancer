@@ -2,9 +2,6 @@ import './calendar.css'
 import { Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Agenda } from "@syncfusion/ej2-react-schedule";
 import { render } from '@testing-library/react';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-
-
 
 export const CalendarPage=()=>{
     {/* Backend-- The Events are located here. */}
